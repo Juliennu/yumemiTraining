@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import YumemiWeather
 
 class ViewController: UIViewController {
 
@@ -14,12 +15,20 @@ class ViewController: UIViewController {
     @IBOutlet weak var rightLabel: UILabel!
     @IBOutlet weak var closeButton: UIButton!
     @IBOutlet weak var reloadButton: UIButton!
+    
+    
+    // imageのRenderingModeをalwaysTemplateに変更
+    let sunnyImage = UIImage(named: "sunny")?.withRenderingMode(.alwaysTemplate)
+    let cloudyImage = UIImage(named: "cloudy")?.withRenderingMode(.alwaysTemplate)
+    let rainyImage = UIImage(named: "rainy")?.withRenderingMode(.alwaysTemplate)
   
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
    
         setUpView()
+        setUpImageViews()
 
     }
     
@@ -29,7 +38,7 @@ class ViewController: UIViewController {
         let imageViewSide = viewWidth / 2
         let labelsWidth = imageViewSide / 2
         
-        imageView.backgroundColor = .blue
+        imageView.backgroundColor = .yellow
         
         leftLabel.textColor = .blue
         leftLabel.textAlignment = .center
@@ -38,7 +47,10 @@ class ViewController: UIViewController {
         rightLabel.textAlignment = .center
         
         closeButton.setTitle("Close", for: .normal)
+        
         reloadButton.setTitle("Reload", for: .normal)
+        //reloadButtonにアクションを追加する
+        reloadButton.addTarget(self, action: #selector(tappedReloadButton), for: .touchUpInside)
         
         
         //Autosizingというレイアウトの仕組みを、AutoLayoutに変換するかどうかを設定するフラグをオフにする
@@ -81,6 +93,49 @@ class ViewController: UIViewController {
         reloadButton.centerXAnchor.constraint(equalTo: rightLabel.centerXAnchor).isActive = true
   
     }
+    
+    func setUpImageViews() {
+
+        
+//        sunnyImage?.withTintColor(.red)
+//        cloudyImage?.withTintColor(.gray)
+//        rainyImage?.withTintColor(.blue)
+
+    }
+    
+    enum Weather: String {
+        case sunny
+        case cloudy
+        case rainy
+    }
+    
+    func switchWeatherImage(weather: Weather) {
+        switch weather {
+        case .sunny:
+            imageView.image = sunnyImage
+            imageView.tintColor = .red
+        case .cloudy:
+            imageView.image = cloudyImage
+            imageView.tintColor = .gray
+        case .rainy:
+            imageView.image = rainyImage
+            imageView.tintColor = .blue
+        }
+    }
+    
+    
+    @objc func tappedReloadButton() {
+        
+        
+        imageView.image = sunnyImage
+        imageView.tintColor = .red
+        
+     
+    }
+    
+
+    
+    
 
 
 }
