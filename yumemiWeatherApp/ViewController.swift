@@ -28,8 +28,6 @@ class ViewController: UIViewController {
         
    
         setUpView()
-        setUpImageViews()
-
     }
     
     func setUpView() {
@@ -38,7 +36,9 @@ class ViewController: UIViewController {
         let imageViewSide = viewWidth / 2
         let labelsWidth = imageViewSide / 2
         
-        imageView.backgroundColor = .yellow
+        imageView.image = sunnyImage
+        imageView.tintColor = .red
+
         
         leftLabel.textColor = .blue
         leftLabel.textAlignment = .center
@@ -93,50 +93,31 @@ class ViewController: UIViewController {
         reloadButton.centerXAnchor.constraint(equalTo: rightLabel.centerXAnchor).isActive = true
   
     }
-    
-    func setUpImageViews() {
 
-        
-//        sunnyImage?.withTintColor(.red)
-//        cloudyImage?.withTintColor(.gray)
-//        rainyImage?.withTintColor(.blue)
-
-    }
-    
-    enum Weather: String {
-        case sunny
-        case cloudy
-        case rainy
-    }
-    
-    func switchWeatherImage(weather: Weather) {
+    func switchWeatherImage(weather: String) {
         switch weather {
-        case .sunny:
+        case "sunny":
             imageView.image = sunnyImage
             imageView.tintColor = .red
-        case .cloudy:
+        case "cloudy":
             imageView.image = cloudyImage
             imageView.tintColor = .gray
-        case .rainy:
+        case "rainy":
             imageView.image = rainyImage
             imageView.tintColor = .blue
+        default:
+            break
         }
     }
     
     
     @objc func tappedReloadButton() {
         
+        let weatherString = YumemiWeather.fetchWeather()
         
-        imageView.image = sunnyImage
-        imageView.tintColor = .red
-        
-     
+        print(weatherString)
+
+        switchWeatherImage(weather: weatherString)
     }
-    
-
-    
-    
-
 
 }
-
