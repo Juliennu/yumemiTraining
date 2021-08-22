@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1A1EC7A926D246F6006E26A0 /* UIAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A1EC7A826D246F6006E26A0 /* UIAlertController.swift */; };
 		1A984DCC26C2223C00DC5095 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A984DCB26C2223C00DC5095 /* AppDelegate.swift */; };
 		1A984DCE26C2223C00DC5095 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A984DCD26C2223C00DC5095 /* SceneDelegate.swift */; };
 		1A984DD026C2223C00DC5095 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A984DCF26C2223C00DC5095 /* ViewController.swift */; };
@@ -17,6 +18,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1A1EC7A826D246F6006E26A0 /* UIAlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIAlertController.swift; sourceTree = "<group>"; };
 		1A984DC826C2223C00DC5095 /* yumemiWeatherApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = yumemiWeatherApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1A984DCB26C2223C00DC5095 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1A984DCD26C2223C00DC5095 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -39,6 +41,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1A1EC7AA26D246FA006E26A0 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				1A1EC7A826D246F6006E26A0 /* UIAlertController.swift */,
+			);
+			name = Extensions;
+			sourceTree = "<group>";
+		};
 		1A984DBF26C2223C00DC5095 = {
 			isa = PBXGroup;
 			children = (
@@ -58,6 +68,7 @@
 		1A984DCA26C2223C00DC5095 /* yumemiWeatherApp */ = {
 			isa = PBXGroup;
 			children = (
+				1A1EC7AA26D246FA006E26A0 /* Extensions */,
 				1A984DCB26C2223C00DC5095 /* AppDelegate.swift */,
 				1A984DCD26C2223C00DC5095 /* SceneDelegate.swift */,
 				1A984DCF26C2223C00DC5095 /* ViewController.swift */,
@@ -145,6 +156,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1A1EC7A926D246F6006E26A0 /* UIAlertController.swift in Sources */,
 				1A984DD026C2223C00DC5095 /* ViewController.swift in Sources */,
 				1A984DCC26C2223C00DC5095 /* AppDelegate.swift in Sources */,
 				1A984DCE26C2223C00DC5095 /* SceneDelegate.swift in Sources */,
