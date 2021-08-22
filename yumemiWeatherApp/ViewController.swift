@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import YumemiWeather
 
 class ViewController: UIViewController {
 
@@ -14,13 +15,19 @@ class ViewController: UIViewController {
     @IBOutlet weak var rightLabel: UILabel!
     @IBOutlet weak var closeButton: UIButton!
     @IBOutlet weak var reloadButton: UIButton!
+    
+    
+    // imageのRenderingModeをalwaysTemplateに変更
+    let sunnyImage = UIImage(named: "sunny")?.withRenderingMode(.alwaysTemplate)
+    let cloudyImage = UIImage(named: "cloudy")?.withRenderingMode(.alwaysTemplate)
+    let rainyImage = UIImage(named: "rainy")?.withRenderingMode(.alwaysTemplate)
   
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
    
         setUpView()
-
     }
     
     func setUpView() {
@@ -29,7 +36,9 @@ class ViewController: UIViewController {
         let imageViewSide = viewWidth / 2
         let labelsWidth = imageViewSide / 2
         
-        imageView.backgroundColor = .blue
+        imageView.image = sunnyImage
+        imageView.tintColor = .red
+
         
         leftLabel.textColor = .blue
         leftLabel.textAlignment = .center
@@ -38,7 +47,10 @@ class ViewController: UIViewController {
         rightLabel.textAlignment = .center
         
         closeButton.setTitle("Close", for: .normal)
+        
         reloadButton.setTitle("Reload", for: .normal)
+        //reloadButtonにアクションを追加する
+        reloadButton.addTarget(self, action: #selector(tappedReloadButton), for: .touchUpInside)
         
         
         //Autosizingというレイアウトの仕組みを、AutoLayoutに変換するかどうかを設定するフラグをオフにする
@@ -82,6 +94,30 @@ class ViewController: UIViewController {
   
     }
 
+    func switchWeatherImage(weather: String) {
+        switch weather {
+        case "sunny":
+            imageView.image = sunnyImage
+            imageView.tintColor = .red
+        case "cloudy":
+            imageView.image = cloudyImage
+            imageView.tintColor = .gray
+        case "rainy":
+            imageView.image = rainyImage
+            imageView.tintColor = .blue
+        default:
+            break
+        }
+    }
+    
+    
+    @objc func tappedReloadButton() {
+        
+        let weatherString = YumemiWeather.fetchWeather()
+        
+        print(weatherString)
+
+        switchWeatherImage(weather: weatherString)
+    }
 
 }
-
