@@ -110,14 +110,43 @@ class ViewController: UIViewController {
         }
     }
     
+    func switchErrMessage(err: Error) -> String {
+        switch err {
+        case YumemiWeatherError.invalidParameterError:
+            return "既定範囲外です"
+        case YumemiWeatherError.unknownError:
+            return "不明なエラーが発生しました"
+        default:
+            return ""
+        }
+    }
+    
     
     @objc func tappedReloadButton() {
         
-        let weatherString = YumemiWeather.fetchWeather()
-        
-        print(weatherString)
+        do {
+            let weatherString = try YumemiWeather.fetchWeather(at: "Tokyo")
+            print(weatherString)
+            switchWeatherImage(weather: weatherString)
+            
+        } catch let err {
+            //エラー処理
+            print(err)
+            let errMessage = switchErrMessage(err: err)
+            let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+            showAlert(title: "エラー", message: errMessage, actions: [okAction])
 
-        switchWeatherImage(weather: weatherString)
+        }
+        
+        
+
     }
+    
+    
+    
+    
+    
+    
+    
 
 }
