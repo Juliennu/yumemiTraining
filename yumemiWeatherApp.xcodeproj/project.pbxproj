@@ -15,6 +15,7 @@
 		1A984DD526C2223E00DC5095 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1A984DD426C2223E00DC5095 /* Assets.xcassets */; };
 		1A984DD826C2223E00DC5095 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1A984DD626C2223E00DC5095 /* LaunchScreen.storyboard */; };
 		1A984DE126C2227800DC5095 /* YumemiWeather in Frameworks */ = {isa = PBXBuildFile; productRef = 1A984DE026C2227800DC5095 /* YumemiWeather */; };
+		1AE7F02F26FB7E78009999FC /* JSONCodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AE7F02E26FB7E78009999FC /* JSONCodable.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,6 +28,7 @@
 		1A984DD426C2223E00DC5095 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1A984DD726C2223E00DC5095 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1A984DD926C2223E00DC5095 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1AE7F02E26FB7E78009999FC /* JSONCodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONCodable.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,6 +70,7 @@
 		1A984DCA26C2223C00DC5095 /* yumemiWeatherApp */ = {
 			isa = PBXGroup;
 			children = (
+				1AE7F02D26FB7E54009999FC /* Models */,
 				1A1EC7AA26D246FA006E26A0 /* Extensions */,
 				1A984DCB26C2223C00DC5095 /* AppDelegate.swift */,
 				1A984DCD26C2223C00DC5095 /* SceneDelegate.swift */,
@@ -78,6 +81,14 @@
 				1A984DD926C2223E00DC5095 /* Info.plist */,
 			);
 			path = yumemiWeatherApp;
+			sourceTree = "<group>";
+		};
+		1AE7F02D26FB7E54009999FC /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				1AE7F02E26FB7E78009999FC /* JSONCodable.swift */,
+			);
+			name = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -158,6 +169,7 @@
 			files = (
 				1A1EC7A926D246F6006E26A0 /* UIAlertController.swift in Sources */,
 				1A984DD026C2223C00DC5095 /* ViewController.swift in Sources */,
+				1AE7F02F26FB7E78009999FC /* JSONCodable.swift in Sources */,
 				1A984DCC26C2223C00DC5095 /* AppDelegate.swift in Sources */,
 				1A984DCE26C2223C00DC5095 /* SceneDelegate.swift in Sources */,
 			);

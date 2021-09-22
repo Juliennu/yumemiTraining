@@ -121,17 +121,64 @@ class ViewController: UIViewController {
         }
     }
     
+    //オブジェクトからJSON文字列を生成
+    let weatherInfo = WeatherInformation(area: "tokyo", date: "2020-04-01T12:00:00+09:00")
+
+//    var jsonString = ""
+
+    //JSONへのエンコード
+    public func jsonEncode() -> String {
+        
+        var jsonString = ""
+        
+        do {
+            let encoder = JSONEncoder()
+            encoder.outputFormatting = [.prettyPrinted, .withoutEscapingSlashes]
+            let jsonData = try encoder.encode(weatherInfo)
+            jsonString = String(data: jsonData, encoding: .utf8) ?? ""
+            
+        } catch {
+            print(error.localizedDescription)
+        }
+        return jsonString
+    }
+    
+    //Jsonからのデコード
+    public func jsonDecode(jsonString: String) -> (String, Int, Int){
+        
+        let json = jsonString.data(using: .utf8)!
+
+        var weather: String = ""
+        var maxTemp: Int = 0
+        var minTemp: Int = 0
+
+        do {
+            let decoder = JSONDecoder()
+            let data = try decoder.decode(WeatherData.self, from: json)
+            weather = data.weather
+            maxTemp = data.maxTemp
+            minTemp = data.minTemp
+            
+
+        } catch {
+            print(error)
+        }
+        return (weather, maxTemp, minTemp)
+    }
     
     @objc func tappedReloadButton() {
         
         do {
-            let weatherString = try YumemiWeather.fetchWeather(at: "Tokyo")
-            print(weatherString)
-            switchWeatherImage(weather: weatherString)
+            let weatherString = try YumemiWeather.fetchWeather(jsonEncode())
+            let data = jsonDecode(jsonString: weatherString)//Stringなんだけどjson形式
+//            print(weatherString)
+            switchWeatherImage(weather: data.0)
+            
+            leftLabel.text = "\(data.2)"//minTemp
+            rightLabel.text = "\(data.1)"//maxTemp
             
         } catch let err {
             //エラー処理
-            print(err)
             let errMessage = switchErrMessage(err: err)
             let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
             showAlert(title: "エラー", message: errMessage, actions: [okAction])
