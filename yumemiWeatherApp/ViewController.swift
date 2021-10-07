@@ -27,7 +27,14 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         
    
+        
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        
         setUpView()
+        
     }
     
     func setUpView() {
@@ -145,7 +152,7 @@ class ViewController: UIViewController {
     
     //Jsonからのデコード
     public func jsonDecode(jsonString: String) -> (String, Int, Int){
-        
+        //Stringをjson形式へ変換
         let json = jsonString.data(using: .utf8)!
 
         var weather: String = ""
@@ -158,8 +165,7 @@ class ViewController: UIViewController {
             weather = data.weather
             maxTemp = data.maxTemp
             minTemp = data.minTemp
-            
-
+//            print(weather)
         } catch {
             print(error)
         }
@@ -167,33 +173,18 @@ class ViewController: UIViewController {
     }
     
     @objc func tappedReloadButton() {
-        
         do {
             let weatherString = try YumemiWeather.fetchWeather(jsonEncode())
-            let data = jsonDecode(jsonString: weatherString)//Stringなんだけどjson形式
-//            print(weatherString)
+            let data = jsonDecode(jsonString: weatherString)
             switchWeatherImage(weather: data.0)
-            
+            print(data.0)
             leftLabel.text = "\(data.2)"//minTemp
             rightLabel.text = "\(data.1)"//maxTemp
-            
         } catch let err {
             //エラー処理
             let errMessage = switchErrMessage(err: err)
             let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
             showAlert(title: "エラー", message: errMessage, actions: [okAction])
-
         }
-        
-        
-
     }
-    
-    
-    
-    
-    
-    
-    
-
 }

@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import YumemiWeather
 
 struct WeatherInformation: Encodable {
     let area: String
@@ -25,19 +24,5 @@ struct WeatherData: Decodable {
         case minTemp = "min_temp"
         case date
     }
-
-
 }
 
-
-
-
-
-
-//{"max_temp":21,"date":"2020-04-01T12:00:00+09:00","min_temp":17,"weather":"cloudy"}
-
-
-
-//let decoder = JSONDecoder()
-//
-//let weatherInfo = try! decoder.decode(WeatherInformation.self, from: )
